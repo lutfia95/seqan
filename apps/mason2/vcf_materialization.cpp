@@ -214,6 +214,9 @@ void VcfMaterializer::init()
                 throw MasonIOException("Could not write methylation levels FAI index.");
         }
     }
+
+    if (!empty(vcfFileName) && numSeqs(faiIndex) != length(contigNames(context(vcfFileIn))))
+        throw MasonIOException("Number of contigs in FAI index and VCF differ.");
 }
 
 // ----------------------------------------------------------------------------
@@ -485,7 +488,7 @@ void VcfMaterializer::_appendToVariants(Variants & variants, seqan::VcfRecord co
         snpRecord.haplotype = 0;
         for (; !atEnd(inputIter); ++inputIter)
         {
-            if (*inputIter == ':') break;
+            if (*inputIter == ':') break; // ignore information after the genotype
             if ((*inputIter == '|' || *inputIter == '/'))
             {
                 if (!empty(buffer))
@@ -546,6 +549,8 @@ void VcfMaterializer::_appendToVariants(Variants & variants, seqan::VcfRecord co
         seqan::CharString buffer;
         smallIndel.haplotype = 0;
         for (; !atEnd(inputIter); ++inputIter)
+        {
+            if (*inputIter == ':') break; // ignore information after the genotype
             if ((*inputIter == '|' || *inputIter == '/'))
             {
                 if (!empty(buffer))
@@ -561,6 +566,7 @@ void VcfMaterializer::_appendToVariants(Variants & variants, seqan::VcfRecord co
             {
                 appendValue(buffer, *inputIter);
             }
+        }
         if (!empty(buffer))
         {
             unsigned idx = std::min(seqan::lexicalCast<unsigned>(buffer), 1u);
