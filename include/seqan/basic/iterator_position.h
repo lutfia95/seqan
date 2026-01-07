@@ -132,6 +132,22 @@ public:
     }
 
     // ------------------------------------------------------------------------
+    // Subscript Operator;  Has to be defined within class.
+    // ------------------------------------------------------------------------
+
+    template <typename TOffset>
+    inline typename Reference<Iter>::Type operator[](TOffset offset)
+    {
+        return value(container(*this), position(*this) + offset);
+    }
+
+    template <typename TOffset>
+    inline typename Reference<Iter>::Type operator[](TOffset offset) const
+    {
+        return value(container(*this), position(*this) + offset);
+    }
+
+    // ------------------------------------------------------------------------
     // Conversion Operators;  Have to be defined in class.
     // ------------------------------------------------------------------------
 
