@@ -157,7 +157,7 @@ struct Lexical
 {
 public:
     typename Size<Lexical>::Type data_lcp;
-    char data_compare;
+    char data_compare{};
 
 public:
     Lexical()
