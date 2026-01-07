@@ -2,6 +2,33 @@
 
 This file summarizes the changes to the SeqAn library and apps.
 
+## Release 2.5.2
+
+### Platform Support
+
+* Support for new compilers: Clang 21.
+* Compiler support (tested):
+  * GCC 13, 14, 15
+  * Clang 19, 20, 21
+  * Intel oneAPI C++ Compiler 2025.0 (IntelLLVM)
+  * Microsoft Visual Studio 17
+  * Other compilers might work but are not tested.
+
+### Selected Bug Fixes
+
+* Build System:
+  * Fixed CMake install relative path and CTD generation.
+* Argument Parser:
+  * Added support for unsigned 64-bit integers.
+* Mason:
+  * Fixed VCF output not using format properly.
+  * Fixed acceptance of 64-bit seeds.
+  * Improved parallel output performance by writing directly without temporary files.
+* Compiler Compatibility:
+  * Fixed internal compiler error on MSVC 19.44.
+  * Fixed deprecated `#pragma omp master` for GCC 16.
+  * Fixed various warnings and issues for GCC 16 compatibility.
+
 ## Release 2.5.1
 
 ### Platform Support
