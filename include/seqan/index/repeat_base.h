@@ -228,12 +228,16 @@ namespace seqan2 {
             {
                 // We have to determine the number of available threads at this point.  We will use the number of thread
                 // local stores to determin the number of available threads later on.
+                #if _OPENMP >= 202011
+                #pragma omp masked
+                #else
                 #pragma omp master
+                #endif
                 {
                     // std::cerr << "omp_get_num_threads() == " << omp_get_num_threads() << std::endl;
                     computeSplitters(splitters, length(text), omp_get_num_threads());
                     resize(threadLocalStores, omp_get_num_threads());
-                }  // end of #pragma omp master
+                }  // end of #pragma omp masked
                 #pragma omp barrier
 
                 int const t = omp_get_thread_num();
