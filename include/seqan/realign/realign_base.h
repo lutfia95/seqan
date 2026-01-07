@@ -865,7 +865,7 @@ void AnsonMyersRealigner_<TFragmentStore>::_endContig(unsigned contigID)
     TAlignedReadIter itEnd = contigAlignmentInfos.alignedItEnd;
     TAlignedReadIter itNew = begin(contigAlignedReads, Standard());
 
-    for (unsigned idx = 0; it != itEnd; ++idx, ++it, ++itNew)
+    for (; it != itEnd; ++it, ++itNew)
     {
         it->beginPos = itNew->beginPos;
         it->endPos = itNew->endPos;

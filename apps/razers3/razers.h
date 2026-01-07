@@ -2382,7 +2382,7 @@ void computeQGramLengths(TDelta & minDelta, TOptions const & options)
 //    const unsigned maxErrors = (unsigned) floor(options.errorRate * maxLength);
 //    const unsigned maxErrors1 = maxErrors + 1;
 
-    unsigned seqCount = 0;
+    // unsigned seqCount = 0;
     String<unsigned> maxDelta;
     resize(minDelta, options.maxOverlap + 1, std::numeric_limits<unsigned>::max());
     resize(maxDelta, options.maxOverlap + 1, 3);
@@ -2393,7 +2393,7 @@ void computeQGramLengths(TDelta & minDelta, TOptions const & options)
         if (options.readLengths[len] == 0)
             continue;
 
-        seqCount += options.readLengths[len];
+        // seqCount += options.readLengths[len];
         for (unsigned ol = 0; ol <= options.maxOverlap; ++ol)
         {
             // sequence must have sufficient length

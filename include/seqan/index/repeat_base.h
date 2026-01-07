@@ -585,7 +585,7 @@ namespace seqan2 {
         reserve(repString, list.size(), Exact());
         typename TRepeatList::const_iterator lit = list.begin();
         typename TRepeatList::const_iterator litEnd = list.end();
-        for (TSize i = 0; lit != litEnd; ++lit, ++i)
+        for (; lit != litEnd; ++lit)
             appendValue(repString, (*lit).second);
     }
 

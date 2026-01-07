@@ -418,7 +418,7 @@ void buildErrorCurvePoints(String<WeightedMatch> & errorCurve,
 
     // The read maps with less than the given number of errors to [left, right]
     // to the contig sequence, is forward strand iff is Forwar is true.
-    TPosition /*left = endPos,*/ right = endPos;
+    // TPosition /*left = endPos,*/ right = endPos;
 
     // Skip this alignment position if not right of previously
     // right border of the interval.
@@ -515,7 +515,7 @@ void buildErrorCurvePoints(String<WeightedMatch> & errorCurve,
                 std::cerr << __FILE__ << ":" << __LINE__ << " -- infix " << infix(finder)
                           << " read " << read << std::endl;
             }
-            right += 1;
+            // right += 1;
         }
         // If we broke because of the score limit then collect the last not
         // yet added hit and the ones right of it until the beginPosition
@@ -550,7 +550,7 @@ void buildErrorCurvePoints(String<WeightedMatch> & errorCurve,
                         std::cerr << __FILE__ << ":" << __LINE__ << " -- infix " << infix(finder)
                                   << " read " << read << std::endl;
                     }
-                    right += 1;
+                    // right += 1;
                 }
             }
         }

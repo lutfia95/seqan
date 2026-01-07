@@ -278,15 +278,11 @@ template<typename TMatch, typename TSize>
 bool
 _checkAlignColOverlap(TMatch & matchA, TMatch & matchB, TSize minLength)
 {
-    TSize equalCols = 0;
     TSize diffCols = 0;
 
     for  (typename TMatch::TPos pos = matchB.begin1; pos < _min(matchA.end1, matchB.end1); ++pos)
     {
-        if (projectedPosition(matchA.row1, matchA.row2, pos) == projectedPosition(matchB.row1, matchB.row2, pos))
-            ++equalCols;
-        else
-            ++diffCols;
+        diffCols += (projectedPosition(matchA.row1, matchA.row2, pos) != projectedPosition(matchB.row1, matchB.row2, pos));
     }
 
     if (diffCols >= minLength) return false;

@@ -207,7 +207,7 @@ SEQAN_DEFINE_TEST(test_consensus_consensus_alignment_no_contig_ids)
 
     // Compute reads and append to FragmentStore.
     seqan2::FragmentStore<> store;
-    for (unsigned pos = 0, i = 0; pos + READ_LENGTH < length(ref); pos += STEP, ++i)
+    for (unsigned pos = 0; pos + READ_LENGTH < length(ref); pos += STEP)
         appendRead(store, infix(ref, pos, pos + READ_LENGTH));
 
     // -----------------------------------------------------------------------

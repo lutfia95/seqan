@@ -1988,7 +1988,7 @@ heaviestCommonSubsequence(Graph<Alignment<TStringSet, TCargo, TSpec> > const& g,
     typedef String<TSize> TSlotToPos;
     typedef typename Iterator<TSlotToPos, Standard>::Type TSlotToPosIter;
     TSlotToPos slotToPos;
-    TSize counter = 0;
+    // TSize counter = 0;
     TSize oldVal = std::numeric_limits<TSize>::max();
     TOccIter occIt = begin(occupiedPositions, Standard());
     TOccIter occItEnd = end(occupiedPositions, Standard());
@@ -1996,7 +1996,7 @@ heaviestCommonSubsequence(Graph<Alignment<TStringSet, TCargo, TSpec> > const& g,
         if (oldVal != *occIt) {
             appendValue(slotToPos, *occIt, Generous());
             oldVal = *occIt;
-            ++counter;
+            // ++counter;
         }
     }
     clear(occupiedPositions);
