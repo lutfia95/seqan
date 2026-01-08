@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -157,7 +157,7 @@ struct Lexical
 {
 public:
     typename Size<Lexical>::Type data_lcp;
-    char data_compare;
+    char data_compare{};
 
 public:
     Lexical()

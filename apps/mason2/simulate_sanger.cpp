@@ -1,7 +1,7 @@
 // ==========================================================================
 //                         Mason - A Read Simulator
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -184,11 +184,11 @@ void SangerSequencingSimulator::_simulateQualities(
 {
     clear(quals);
 
-    unsigned pos = 0;   // Position in result.
+    // unsigned pos = 0;   // Position in result.
     unsigned rPos = 0;  // Position in fragment.
     for (unsigned i = 0; i < length(cigar); ++i)
     {
-        for (unsigned j = 0; j < cigar[i].count; ++j, ++pos)
+        for (unsigned j = 0; j < cigar[i].count; ++j/*, ++pos*/)
         {
             double mean = 0.0, stdDev = 0.0;
             double relPos = 1.0 * rPos / (1.0 * sampleLength);

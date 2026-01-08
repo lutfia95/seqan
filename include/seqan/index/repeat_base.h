@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -228,12 +228,16 @@ namespace seqan2 {
             {
                 // We have to determine the number of available threads at this point.  We will use the number of thread
                 // local stores to determin the number of available threads later on.
+                #if _OPENMP >= 202011
+                #pragma omp masked
+                #else
                 #pragma omp master
+                #endif
                 {
                     // std::cerr << "omp_get_num_threads() == " << omp_get_num_threads() << std::endl;
                     computeSplitters(splitters, length(text), omp_get_num_threads());
                     resize(threadLocalStores, omp_get_num_threads());
-                }  // end of #pragma omp master
+                }  // end of #pragma omp masked
                 #pragma omp barrier
 
                 int const t = omp_get_thread_num();
@@ -585,7 +589,7 @@ namespace seqan2 {
         reserve(repString, list.size(), Exact());
         typename TRepeatList::const_iterator lit = list.begin();
         typename TRepeatList::const_iterator litEnd = list.end();
-        for (TSize i = 0; lit != litEnd; ++lit, ++i)
+        for (; lit != litEnd; ++lit)
             appendValue(repString, (*lit).second);
     }
 

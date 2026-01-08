@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -83,7 +83,7 @@ namespace seqan2
         Pair<TSize> out;
         TSize windowBegin = 0;
         TSize overlap = 0;
-        TSize _pushes = 0;
+        //TSize _pushes = 0;
         //TSize _olaps = 0;
         //char *seenISA = new bool[n];
         //memset(seenISA, 0, length(invertedSAIn));
@@ -143,7 +143,7 @@ namespace seqan2
                             push(dest, out);
                             //SEQAN_ASSERT(!seenISA[out.i1] && 0 <= out.i1 && out.i1 < n);
                             //seen[out.i1] = true;
-                            ++_pushes;
+                            //++_pushes;
 
                             #ifdef SEQAN_DEBUG_INDEX
                                 if ((lcpNumer += out.i2) > n) {
@@ -237,7 +237,7 @@ namespace seqan2
         Pair<TSize> out;
         TSize windowBegin = 0;
         TSize overlap = 0;
-        TSize _pushes = 0;
+        //TSize _pushes = 0;
         //TSize _olaps = 0;
         //char *seenISA = new bool[n];
         //memset(seenISA, 0, length(invertedSAIn));
@@ -309,7 +309,7 @@ namespace seqan2
                             push(dest, out);
                             //SEQAN_ASSERT(!seenISA[out.i1] && 0 <= out.i1 && out.i1 < n);
                             //seen[out.i1] = true;
-                            ++_pushes;
+                            //++_pushes;
 
                             #ifdef SEQAN_DEBUG_INDEX
                                 if ((lcpNumer += out.i2) > n) {

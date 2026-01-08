@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -129,6 +129,22 @@ public:
     operator->() const
     {
         return &data_container[position(*this)];
+    }
+
+    // ------------------------------------------------------------------------
+    // Subscript Operator;  Has to be defined within class.
+    // ------------------------------------------------------------------------
+
+    template <typename TOffset>
+    inline typename Reference<Iter>::Type operator[](TOffset offset)
+    {
+        return value(container(*this), position(*this) + offset);
+    }
+
+    template <typename TOffset>
+    inline typename Reference<Iter>::Type operator[](TOffset offset) const
+    {
+        return value(container(*this), position(*this) + offset);
     }
 
     // ------------------------------------------------------------------------

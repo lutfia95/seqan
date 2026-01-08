@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -865,7 +865,7 @@ void AnsonMyersRealigner_<TFragmentStore>::_endContig(unsigned contigID)
     TAlignedReadIter itEnd = contigAlignmentInfos.alignedItEnd;
     TAlignedReadIter itNew = begin(contigAlignedReads, Standard());
 
-    for (unsigned idx = 0; it != itEnd; ++idx, ++it, ++itNew)
+    for (; it != itEnd; ++it, ++itNew)
     {
         it->beginPos = itNew->beginPos;
         it->endPos = itNew->endPos;

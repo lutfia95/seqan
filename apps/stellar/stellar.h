@@ -2,7 +2,7 @@
 //                    STELLAR - SwifT Exact LocaL AligneR
 //                   https://www.seqan.de/apps/stellar
 // ==========================================================================
-// Copyright (C) 2010-2025 by Birte Kehr
+// Copyright (C) 2010-2026 by Birte Kehr
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
@@ -278,15 +278,11 @@ template<typename TMatch, typename TSize>
 bool
 _checkAlignColOverlap(TMatch & matchA, TMatch & matchB, TSize minLength)
 {
-    TSize equalCols = 0;
     TSize diffCols = 0;
 
     for  (typename TMatch::TPos pos = matchB.begin1; pos < _min(matchA.end1, matchB.end1); ++pos)
     {
-        if (projectedPosition(matchA.row1, matchA.row2, pos) == projectedPosition(matchB.row1, matchB.row2, pos))
-            ++equalCols;
-        else
-            ++diffCols;
+        diffCols += (projectedPosition(matchA.row1, matchA.row2, pos) != projectedPosition(matchB.row1, matchB.row2, pos));
     }
 
     if (diffCols >= minLength) return false;

@@ -1,7 +1,7 @@
 // ==========================================================================
 //                 SeqAn - The Library for Sequence Analysis
 // ==========================================================================
-// Copyright (c) 2006-2025, Knut Reinert, FU Berlin
+// Copyright (c) 2006-2026, Knut Reinert, FU Berlin
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -207,7 +207,7 @@ SEQAN_DEFINE_TEST(test_consensus_consensus_alignment_no_contig_ids)
 
     // Compute reads and append to FragmentStore.
     seqan2::FragmentStore<> store;
-    for (unsigned pos = 0, i = 0; pos + READ_LENGTH < length(ref); pos += STEP, ++i)
+    for (unsigned pos = 0; pos + READ_LENGTH < length(ref); pos += STEP)
         appendRead(store, infix(ref, pos, pos + READ_LENGTH));
 
     // -----------------------------------------------------------------------
